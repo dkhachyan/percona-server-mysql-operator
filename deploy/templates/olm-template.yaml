@@ -1,0 +1,42 @@
+metadata:
+  annotations:
+    categories: "AI/Machine Learning, Big Data, Cloud Provider, Storage"
+    description: |-
+        Percona Server for MySQL is a free, fully compatible, enhanced, and open source drop-in replacement for any MySQL database. It provides superior performance, scalability, and instrumentation.
+    k8sMinVersion: "1.18"
+    repository: https://github.com/percona/percona-server-mysql-operator
+    capabilities: "Full Lifecycle"
+  namespace: percona-server-operator
+spec:
+  maturity: alpha
+  keywords:
+    - MySQL
+  maintainers:
+    - name: Percona Team
+      email: info@percona.com
+  provider:
+    name: Percona Inc
+    url: http://www.percona.com/software/percona-server
+  links:
+    - name: Website
+      url: 'http://www.percona.com'
+    - name: Github
+      url: 'https://github.com/percona'
+  description: |-
+    # Percona Operator for MySQL
+
+    [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+    [Percona Server for MySQL](https://www.percona.com/software/mysql-database/percona-server) is a free, fully compatible, enhanced, and open source drop-in replacement for any MySQL database. It provides superior performance, scalability, and instrumentation.
+
+    Based on our best practices for deployment and configuration, [Percona Operator for MySQL](https://www.percona.com/doc/kubernetes-operator-for-mysql/ps/index.html) contains everything you need to quickly and consistently deploy and scale MySQL instances in a Kubernetes-based environment on-premises or in the cloud. It provides the following capabilities:
+
+    * Deploy asynchronous and semi-sync replication MySQL clusters with Orchestrator on top of it
+    * Expose clusters with regular Kubernetes Services
+    * Monitor the cluster with [Percona Monitoring and Management](https://www.percona.com/software/database-tools/percona-monitoring-and-management)
+    * Customize MySQL configuration
+    * Manage system user passwords
+
+    ## Status
+
+    **This project is in the tech preview state right now. Don't use it on production.**

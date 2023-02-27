@@ -106,7 +106,6 @@ manifests: kustomize generate
 	cd config/manager && $(KUSTOMIZE) edit set image perconalab/percona-server-mysql-operator=$(IMAGE)
 	$(KUSTOMIZE) build config/manager/ > $(DEPLOYDIR)/operator.yaml
 	echo "---" >> $(DEPLOYDIR)/operator.yaml
-	cat $(DEPLOYDIR)/crd.yaml $(DEPLOYDIR)/rbac.yaml $(DEPLOYDIR)/operator.yaml > $(DEPLOYDIR)/bundle.yaml
 
 gen-versionservice-client: swagger
 	rm pkg/version/service/version.swagger.yaml
@@ -171,11 +170,8 @@ rm -rf $$TMP_DIR ;\
 endef
 
 .PHONY: bundle
-bundle: manifests kustomize ## Generate bundle manifests and metadata, then validate generated files.
-	operator-sdk generate kustomize manifests -q
-	cd config/manager && $(KUSTOMIZE) edit set image controller=$(IMAGE)
-	$(KUSTOMIZE) build config/manifests | operator-sdk generate bundle -q --overwrite --version $(VERSION) $(BUNDLE_METADATA_OPTS)
-	operator-sdk bundle validate ./bundle
+bundle: manifests ## Generate bundle manifests and metadata, then validate generated files.
+	operator-sdk generate bundle -q --version $(VERSION) --deploy-dir ./deploy --output-dir ./olm-bundle --channels alpha
 
 .PHONY: bundle-build
 bundle-build: ## Build the bundle image.

@@ -172,6 +172,7 @@ endef
 .PHONY: bundle
 bundle: manifests ## Generate bundle manifests and metadata, then validate generated files.
 	operator-sdk generate bundle -q --version $(VERSION) --deploy-dir ./deploy --output-dir ./olm-bundle --channels alpha
+	# yq eval-all -i ". as \$item ireduce ({}; . * \$item )" olm-bundle/manifests/percona-server-mysql-operator.clusterserviceversion.yaml deploy/templates/olm-template.yaml
 
 .PHONY: bundle-build
 bundle-build: ## Build the bundle image.

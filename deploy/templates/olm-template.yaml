@@ -8,7 +8,7 @@ metadata:
     capabilities: "Full Lifecycle"
   namespace: percona-server-operator
 spec:
-  maturity: alpha
+  maturity: preview
   keywords:
     - MySQL
   maintainers:
